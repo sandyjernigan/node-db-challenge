@@ -9,8 +9,8 @@
 
 > A `primary key` is important for the table structure and accessibility. This key can make it easier to pull specific information from the row-level access. It is also one of the preferred methods to update table data, as you can update the row based off of the primary key in that row. 
 
-- [ ] What is the name given to a table column that references the primary key on another table.
+- [x] What is the name given to a table column that references the primary key on another table?
 
-
+`Foreign keys` are teh type of table field that references the primary key on another table. These can be used to link a record in one table to a record in another table.
 
 - [ ] What do we need in order to have a _many to many_ relationship between two tables.
