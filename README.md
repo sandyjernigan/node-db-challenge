@@ -16,17 +16,17 @@ The Minimum Viable Product must be completed in three hours.
 
 Follow these steps to set up and work on your project:
 
-- [ ] Create a forked copy of this project.
-- [ ] Add your _Team Lead_ as collaborator on Github.
-- [ ] Clone your forked version of the Repository.
-- [ ] Create a new Branch on the clone: git checkout -b `firstName-lastName`.
-- [ ] Implement the project on this Branch, committing changes regularly.
-- [ ] Push commits: git push origin `firstName-lastName`.
+- [x] Create a forked copy of this project.
+- [x] Add your _Team Lead_ as collaborator on Github.
+- [x] Clone your forked version of the Repository.
+- [x] Create a new Branch on the clone: git checkout -b `firstName-lastName`.
+- [x] Implement the project on this Branch, committing changes regularly.
+- [x] Push commits: git push origin `firstName-lastName`.
 
 Follow these steps for completing your project.
 
-- [ ] Submit a Pull-Request to merge `firstName-lastName` Branch into master on **your fork, don't make Pull Requests against Lambda's repository**.
-- [ ] Please don't merge your own pull request.
+- [x] Submit a Pull-Request to merge `firstName-lastName` Branch into master on **your fork, don't make Pull Requests against Lambda's repository**.
+- [x] Please don't merge your own pull request.
 - [ ] Add your _Team Lead_ as a Reviewer on the Pull-request
 - [ ] Your _Team Lead_ will count the challenge as done by merging the branch into _master_.
 
@@ -38,13 +38,22 @@ Commit your code regularly and use descriptive messages. This helps both you (in
 
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
-- [ ] Explain the difference between `Relational Databases` and `SQL`.
+- [x] Explain the difference between `Relational Databases` and `SQL`.
 
-- [ ] Why do tables need a `primary key`?
+> SQL Databases are normally referred to as `Relational Databases`. Relational Databases defines and manipulate data using SQL. SQL, structured query language, is the language that interacts with the database in a specific way. Relational Databases are versatile and widely used however they can be restrictive requiring predefined standards.   
+> `NoSQL Databases` are considered unstructured compared to their SQL Database processor. NoSQL has a dynamic  schema and offers some additional flexibility. However, these do have limitations attempting to use complex queries.
 
-- [ ] What is the name given to a table column that references the primary key on another table.
+- [x] Why do tables need a `primary key`?
 
-- [ ] What do we need in order to have a _many to many_ relationship between two tables.
+> A `primary key` is important for the table structure and accessibility. This key can make it easier to pull specific information from the row-level access. It is also one of the preferred methods to update table data, as you can update the row based off of the primary key in that row. 
+
+- [x] What is the name given to a table column that references the primary key on another table?
+
+> `Foreign keys` are the type of table field that references the primary key on another table. These can be used to link a record in one table to a record in another table.
+
+- [x] What do we need in order to have a _many to many_ relationship between two tables?
+
+> An `intermediary table` is the best model to use to create a many-to-many relationship. This table holds foreign keys that reference the primary key on the related tables so data can be as ‘DRY’ as possible.
 
 ## Minimum Viable Product
 
