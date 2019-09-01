@@ -11,7 +11,8 @@
 
 - [x] What is the name given to a table column that references the primary key on another table?
 
-> `Foreign keys` are teh type of table field that references the primary key on another table. These can be used to link a record in one table to a record in another table.
+> `Foreign keys` are the type of table field that references the primary key on another table. These can be used to link a record in one table to a record in another table.
 
-- [ ] What do we need in order to have a _many to many_ relationship between two tables.
+- [x] What do we need in order to have a _many to many_ relationship between two tables.
 
+> 
