@@ -1,7 +1,7 @@
 
 exports.up = function(knex) {
   return knex.schema
-  // A project is what needs to be done.
+  // A project is what needs to be done. A `project` can have multiple `tasks`.
   .createTable('projects', tbl => {
     // a unique Id.
     tbl.increments();
@@ -34,9 +34,16 @@ exports.up = function(knex) {
     tbl.text('task_notes');
     // a boolean that indicates if the task has been completed. 
       // This column cannot be NULL, the default value should be false.
-    tbl.boolean('project_completed').notNullable();
+    tbl.boolean('task_completed').notNullable();
+    // A `task` belongs to only one `project`. Foreign Key to link Project id
+    tbl.integer('project_id')
+      .unsigned()
+      .notNullable()
+      .references('id')
+      .inTable('projects')
+      .onDelete('CASCADE')
+      .onUpdate('CASCADE');
   })
-
 
 };
 
