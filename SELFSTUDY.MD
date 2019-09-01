@@ -13,6 +13,6 @@
 
 > `Foreign keys` are the type of table field that references the primary key on another table. These can be used to link a record in one table to a record in another table.
 
-- [x] What do we need in order to have a _many to many_ relationship between two tables.
+- [x] What do we need in order to have a _many to many_ relationship between two tables?
 
-> 
+> An `intermediary table` is the best model to use to create a many-to-many relationship. This table holds foreign keys that reference the primary key on the related tables so data can be as ‘DRY’ as possible.
