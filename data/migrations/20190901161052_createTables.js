@@ -10,7 +10,7 @@ exports.up = function(knex) {
     // a description
     tbl.text('project_description');
     // a boolean that indicates if the project has been completed. 
-    // This column cannot be NULL, the default value should be false.
+      // This column cannot be NULL, the default value should be false.
     tbl.boolean('project_completed').notNullable();
   })
 
@@ -23,6 +23,20 @@ exports.up = function(knex) {
     // a description.
     tbl.text('resource_description');
   })
+
+  // An task one of the steps needed to complete the project.
+  .createTable('tasks', tbl => {
+    // a unique Id.
+    tbl.increments();
+    // a description of what needs to be done. This column is required.
+    tbl.string('task_description').notNullable();
+    // a notes column to add additional information.
+    tbl.text('task_notes');
+    // a boolean that indicates if the task has been completed. 
+      // This column cannot be NULL, the default value should be false.
+    tbl.boolean('project_completed').notNullable();
+  })
+
 
 };
 
