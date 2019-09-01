@@ -45,6 +45,25 @@ exports.up = function(knex) {
       .onUpdate('CASCADE');
   })
 
+  // - a `project` can use multiple `resources`.
+  // - the same `resource` can be used in multiple `projects`.
+  .createTable('projects_resources', tbl => {
+    tbl.integer('project_id')
+      .unsigned()
+      .notNullable()
+      .references('id')
+      .inTable('projects')
+      .onDelete('CASCADE')
+      .onUpdate('CASCADE');
+    tbl.integer('resources_id')
+      .unsigned()
+      .notNullable()
+      .references('id')
+      .inTable('resources')
+      .onDelete('CASCADE')
+      .onUpdate('CASCADE');
+    tbl.primary(['project_id', 'resources_id']);
+  })
 };
 
 exports.down = function(knex) {
