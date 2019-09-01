@@ -14,7 +14,16 @@ exports.up = function(knex) {
     tbl.boolean('project_completed').notNullable();
   })
 
-   
+  // A resource is anything needed to complete a project, some examples are: a person, a tool, a meeting room or a software license.
+  .createTable('resources', tbl => {
+    // a unique Id.
+    tbl.increments();
+    // a name. This column is required.
+    tbl.string('resource_name').notNullable().unique();
+    // a description.
+    tbl.text('resource_description');
+  })
+
 };
 
 exports.down = function(knex) {
