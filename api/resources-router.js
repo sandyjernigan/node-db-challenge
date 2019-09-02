@@ -14,10 +14,10 @@ router.post('/', async (req, res) => {});
 // GET
 router.get('/', async (req, res) => {
   try {
-    const projects = await Projects.getProjects();
-    res.json(projects);
+    const resources = await Projects.getResources();
+    res.json(resources);
   } catch (err) {
-    res.status(500).json({ message: 'Failed to get projects.' });
+    res.status(500).json({ message: 'Failed to get resources.' });
   }
 });
 

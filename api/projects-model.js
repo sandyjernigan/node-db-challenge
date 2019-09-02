@@ -1,7 +1,8 @@
 const db = require('../data/db-config.js');
 
 module.exports = {
-  getProjects
+  getProjects,
+  getResources
 };
 
 //#region - CREATE
@@ -15,6 +16,11 @@ module.exports = {
 // getProjects() - return all projects 
 function getProjects() {
   return db('projects');
+}
+
+// getResources() - return all resources 
+function getResources() {
+  return db('resources');
 }
 
 //#endregion
