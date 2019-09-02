@@ -39,13 +39,10 @@ router.post('/:id/resources', async (req, res) => {
   try {
     const results = await Projects.addResource(input);
     const resource_id = results.id
-    console.log(resource_id)
     try {
     const reference = {'resources_id': resource_id, 'project_id': id};
-    console.log(reference)
     const resultsReference = await Projects.addProjectResource(reference);
-    console.log(resultsReference)
-    res.status(201).json(results, resultsReference);
+    res.status(201).json(results);
     } catch (err) {
       res.status(500).json({ message: 'Failed to create reference' });
     }
