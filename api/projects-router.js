@@ -26,7 +26,15 @@ router.get('/:id', async (req, res) => {
   const { id } = req.params;
 
   try {
+    const project = await Projects.getProjectByID(id);
+
+    if (project.length) {
+      res.json(project);
+    } else {
+      res.status(404).json({ message: 'Could not find the project' })
+    }
   } catch (err) {
+    res.status(500).json({ message: 'Failed to get project' });
   }
 });
 
