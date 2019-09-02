@@ -14,7 +14,10 @@ router.post('/', async (req, res) => {});
 // GET
 router.get('/', async (req, res) => {
   try {
+    const projects = await Recipes.getProjects();
+    res.json(projects);
   } catch (err) {
+    res.status(500).json({ message: 'Failed to get projects.' });
   }
 });
 
