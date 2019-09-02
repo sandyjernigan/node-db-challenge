@@ -4,7 +4,8 @@ module.exports = {
   getProjects,
   getResources,
   getProjectByID,
-  getResourceByID
+  getResourceByID,
+  getTasksByProject
 };
 
 //#region - CREATE
@@ -35,6 +36,22 @@ function getProjectByID(id) {
 function getResourceByID(id) {
   return db('resources')
     .where({ id });
+}
+
+// getProjectTasks - returns task database based on the project id
+function getTasksByProject(id) {
+  return db('tasks')
+    .join('projects', 'projects.id', 'tasks.project_id')
+    .select(
+      'projects.project_name as name', 
+      'projects.project_description as description', 
+      'projects.project_completed',
+      'tasks.task_description as description', 
+      'tasks.task_notes as notes', 
+      'tasks.task_completed'
+      )
+    .orderBy('tasks.id')
+    .where({ 'tasks.project_id': id });
 }
 
 //#endregion
