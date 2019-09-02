@@ -5,7 +5,16 @@ const Projects = require('./projects-model.js');
 const router = express.Router();
 
 //#region - CREATE
-router.post('/', async (req, res) => {});
+router.post('/', async (req, res) => {
+  const input = req.body;
+
+  try {
+    const results = await Projects.addProject(input);
+    res.status(201).json(results);
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to create new project' });
+  }
+});
 
 //#endregion
 
@@ -28,7 +37,7 @@ router.get('/:id', async (req, res) => {
   try {
     const project = await Projects.getProjectByID(id);
 
-    if (project.length) {
+    if (project) {
       res.json(project);
     } else {
       res.status(404).json({ message: 'Could not find the project' })

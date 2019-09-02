@@ -1,6 +1,7 @@
 const db = require('../data/db-config.js');
 
 module.exports = {
+  addProject,
   getProjects,
   getResources,
   getProjectByID,
@@ -10,7 +11,12 @@ module.exports = {
 
 //#region - CREATE
 
-// function add
+function addProject(input) {
+  return db('projects').insert(input)
+  .then(ids => {
+    return getProjectByID(ids[0]);
+  });
+}
 
 //#endregion
 
