@@ -28,14 +28,12 @@ function getResources() {
 
 // getProjectByID() - return a project
 function getProjectByID(id) {
-  return db('projects')
-    .where({ id });
+  return db('projects').where({ id }).first();
 }
 
 // getResourceByID() - return a resource 
 function getResourceByID(id) {
-  return db('resources')
-    .where({ id });
+  return db('resources').where({ id }).first();
 }
 
 // getProjectTasks - returns task database based on the project id
