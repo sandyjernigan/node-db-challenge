@@ -5,6 +5,8 @@ const Projects = require('./projects-model.js');
 const router = express.Router();
 
 //#region - CREATE
+
+// add Project
 router.post('/', async (req, res) => {
   const input = req.body;
 
@@ -13,6 +15,42 @@ router.post('/', async (req, res) => {
     res.status(201).json(results);
   } catch (err) {
     res.status(500).json({ message: 'Failed to create new project' });
+  }
+});
+
+// add Task with Project ID
+router.post('/:id/tasks', async (req, res) => {
+  const { id } = req.params; 
+  const input = {...req.body, 'project_id': id};
+
+  try {
+    const results = await Projects.addTask(input);
+    res.status(201).json(results);
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to create new task' });
+  }
+});
+
+// add Resource with Project ID
+router.post('/:id/resources', async (req, res) => {
+  const { id } = req.params; 
+  const input = req.body;
+
+  try {
+    const results = await Projects.addResource(input);
+    const resource_id = results.id
+    console.log(resource_id)
+    try {
+    const reference = {'resources_id': resource_id, 'project_id': id};
+    console.log(reference)
+    const resultsReference = await Projects.addProjectResource(reference);
+    console.log(resultsReference)
+    res.status(201).json(results, resultsReference);
+    } catch (err) {
+      res.status(500).json({ message: 'Failed to create reference' });
+    }
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to create new resource' });
   }
 });
 

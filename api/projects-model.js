@@ -1,11 +1,14 @@
 const db = require('../data/db-config.js');
 
 module.exports = {
-  addProject,
-  getProjects,
-  getResources,
-  getProjectByID,
-  getResourceByID,
+  addProject, 
+  addTask, 
+  addResource, 
+  addProjectResource, 
+  getProjects, 
+  getResources, 
+  getProjectByID, 
+  getResourceByID, 
   getTasksByProject
 };
 
@@ -17,6 +20,25 @@ function addProject(input) {
     return getProjectByID(ids[0]);
   });
 }
+
+function addTask(input) {
+  return db('tasks').insert(input)
+  .then(ids => {
+    return getTasksByID(ids[0]);
+  });
+}
+
+function addResource(input) {
+  return db('resources').insert(input)
+  .then(ids => {
+    return getResourceByID(ids[0]);
+  });
+}
+
+function addProjectResource(input) {
+  return db('projects_resources').insert(input)
+}
+
 
 //#endregion
 
@@ -40,6 +62,11 @@ function getProjectByID(id) {
 // getResourceByID() - return a resource 
 function getResourceByID(id) {
   return db('resources').where({ id }).first();
+}
+
+// getResourceByID() - return a resource 
+function getTasksByID(id) {
+  return db('tasks').where({ id }).first();
 }
 
 // getProjectTasks - returns task database based on the project id
