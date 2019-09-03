@@ -14,25 +14,19 @@ module.exports = {
 
 //#region - CREATE
 
-function addProject(input) {
-  return db('projects').insert(input)
-  .then(ids => {
-    return getProjectByID(ids[0]);
-  });
+async function addProject(input) {
+  const ids = await db('projects').insert(input);
+  return getProjectByID(ids[0]);
 }
 
-function addTask(input) {
-  return db('tasks').insert(input)
-  .then(ids => {
-    return getTasksByID(ids[0]);
-  });
+async function addTask(input) {
+  const ids = await db('tasks').insert(input);
+  return getTasksByID(ids[0]);
 }
 
-function addResource(input) {
-  return db('resources').insert(input)
-  .then(ids => {
-    return getResourceByID(ids[0]);
-  });
+async function addResource(input) {
+  const ids = await db('resources').insert(input);
+  return getResourceByID(ids[0]);
 }
 
 function addProjectResource(input) {
