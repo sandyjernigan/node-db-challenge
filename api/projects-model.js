@@ -39,18 +39,23 @@ function addProjectResource(input) {
 //#region - READ
 
 // getProjects() - return all projects 
-function getProjects() {
-  return db('projects');
+async function getProjects() {
+  return await db('projects');
 }
 
 // getResources() - return all resources 
-function getResources() {
-  return db('resources');
+async function getResources() {
+  const results = await db('resources');
+  return results;
 }
 
 // getProjectByID() - return a project
-function getProjectByID(id) {
-  return db('projects').where({ id }).first();
+async function getProjectByID(id) {
+  const results = await db('projects').where({ id }).first();
+  if (results) {
+    results.project_completed = convertTrueFalse(results.project_completed)
+  }
+  return results;
 }
 
 // getResourceByID() - return a resource 
@@ -92,3 +97,13 @@ function getTasksByProject(id) {
 // remove
 
 //#endregion
+
+function convertTrueFalse(boolean) {
+  if (boolean == 0) {
+    return false
+  } else if (boolean == 1) {
+    return true
+  } else {
+    return null
+  }
+}
