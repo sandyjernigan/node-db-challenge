@@ -11,7 +11,7 @@ exports.up = function(knex) {
     tbl.text('project_description');
     // a boolean that indicates if the project has been completed. 
       // This column cannot be NULL, the default value should be false.
-    tbl.boolean('project_completed').notNullable();
+    tbl.boolean('project_completed').notNullable().defaultTo(false);
   })
 
   // A resource is anything needed to complete a project, some examples are: a person, a tool, a meeting room or a software license.
@@ -34,7 +34,7 @@ exports.up = function(knex) {
     tbl.text('task_notes');
     // a boolean that indicates if the task has been completed. 
       // This column cannot be NULL, the default value should be false.
-    tbl.boolean('task_completed').notNullable();
+    tbl.boolean('task_completed').notNullable().defaultTo(false);
     // A `task` belongs to only one `project`. Foreign Key to link Project id
     tbl.integer('project_id')
       .unsigned()
