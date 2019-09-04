@@ -9,4 +9,8 @@ server.use(express.json());
 server.use('/api/projects', ProjectsRouter);
 server.use('/api/resources', ResourcesRouter);
 
+server.get('/', (req, res) => {
+  res.send("Hello World!");
+});
+
 module.exports = server;
