@@ -40,7 +40,9 @@ function addProjectResource(input) {
 
 // getProjects() - return all projects 
 async function getProjects() {
-  return await db('projects');
+  const results = await db('projects');
+  // const resultsMapped = results.map(convertTrueFalse);
+  return results
 }
 
 // getResources() - return all resources 
@@ -52,9 +54,7 @@ async function getResources() {
 // getProjectByID() - return a project
 async function getProjectByID(id) {
   const results = await db('projects').where({ id }).first();
-  if (results) {
-    results.project_completed = convertTrueFalse(results.project_completed)
-  }
+  convertTrueFalse(results)
   return results;
 }
 
@@ -98,12 +98,11 @@ function getTasksByProject(id) {
 
 //#endregion
 
-function convertTrueFalse(boolean) {
-  if (boolean == 0) {
-    return false
-  } else if (boolean == 1) {
-    return true
+function convertTrueFalse(x) {
+  if(x.project_completed == 1){
+    x.project_completed = true
   } else {
-    return null
+    x.project_completed = false
   }
+  console.log(x)
 }
