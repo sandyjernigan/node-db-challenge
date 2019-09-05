@@ -41,8 +41,8 @@ function addProjectResource(input) {
 // getProjects() - return all projects 
 async function getProjects() {
   const results = await db('projects');
-  // const resultsMapped = results.map(convertTrueFalse);
-  return results
+  const resultsMapped = results.map(convertTrueFalse); 
+  return resultsMapped
 }
 
 // getResources() - return all resources 
@@ -104,5 +104,5 @@ function convertTrueFalse(x) {
   } else {
     x.project_completed = false
   }
-  console.log(x)
+  return x
 }
